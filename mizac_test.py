@@ -14,25 +14,29 @@ choices = [
         "a) Sıcak mevsimlerde çok ısınırım": ["A"],
         "b) Tüm mevsimlerde ısınırım": ["B"],
         "c) Soğuk mevsimlerde üşürüm": ["C"],
-        "d) Tüm mevsimlerde uşürüm": ["D"]
+        "d) Tüm mevsimlerde uşürüm": ["D"],
+        "e) None": ["E"],
     },
     {
         "a) Dog": ["A"],
         "b) Cat": ["B"],
         "c) Bird": ["C"],
         "d) Elephant": ["C", "D"],
+        "e) None": ["E"],
     },
     {
         "a) Spring": ["A"],
         "b) Summer": ["B"],
         "c) Autumn": ["C"],
         "d) Winter": ["D"],
+        "e) None": ["E"],
     },
     {
         "a) Spring": ["A"],
         "b) Summer": ["B"],
         "c) Autumn": ["C"],
         "d) Winter": ["D"],
+        "e) None": ["E"],
     },
     # Add more choices here...
 ]
@@ -55,11 +59,14 @@ for i in range(len(questions)):
     print(questions[i])
     for choice, associated_personalities in choices[i].items():
         print(choice)
-    answer = input("Enter your choice (a, b, c, d): ")
+    answer = input("Enter your choice (a, b, c, d,e): ")
     
     # Update personality scores based on selected choices
     for choice, associated_personalities in choices[i].items():
-        if answer.lower() == choice.split(')')[0].lower():
+        #ignore the 'e' choice cause that is denge and has no wight.
+        if answer.lower() == 'e':
+            continue 
+        elif answer.lower() == choice.split(')')[0].lower():
             for personality in associated_personalities:
                 personality_scores[personality] += 1
 
